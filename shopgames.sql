@@ -12,7 +12,8 @@ CREATE TABLE category (
 INSERT INTO category (nombre) VALUES 
 ('PlayStation'),
 ('Fortnite Pavos'),
-('Xbox Cards');
+('Xbox Cards'),
+('Robux Key');
 
 
 CREATE TABLE games (
@@ -43,6 +44,14 @@ CREATE TABLE xbox (
     FOREIGN KEY (category_id) REFERENCES category(id)
 );
 
+CREATE TABLE robux (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(200) NOT NULL,
+    category_id INT,
+    price DECIMAL(10, 2) UNSIGNED NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES category(id)
+);
+
 -- Insertar juegos en la table game
 INSERT INTO games(id, title, description, category_id, liked, download, price, poster) VALUES
 (UUID_TO_BIN(UUID()), "Assassins Creed Mirage", "Lorem ipsum", 1, 120, 133, 14.55, "https://m.media-amazon.com/images/I/91obuWzA3XL._AC_UF1000,1000_QL80_.jpg"),
@@ -65,9 +74,16 @@ INSERT INTO xbox (titulo, category_id, price) VALUES
 ('Tarjeta Xbox Game Pass 1 Mes', 3, 14.99),
 ('Tarjeta Xbox Game Pass 3 Meses', 3, 39.99);
 
-SELECT BIN_TO_UUID(id) id , title, description, liked, download, price, poster FROM games;
+INSERT INTO robux (titulo, category_id, price) VALUES
+('1200 Robux Key GLOBAL', 4, 9.99),
+('2200 Robux Key GLOBAL', 4, 24.99),
+('4500 Robux Key GLOBAL', 4, 44.99),
+('7000 RobUX Key GLOBAL', 4, 55.50);
+
+-- SELECT BIN_TO_UUID(id) id , title, description, liked, download, price, poster FROM games;
 SELECT * FROM games;
 SELECT * FROM pavos;
 SELECT * FROM xbox;
+SELECT * FROM robux;
 
 SELECT * FROM category;
