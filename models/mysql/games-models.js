@@ -38,6 +38,23 @@ export class GameModel {
     return games[0]
   }
 
+  static async delete ({ id }) {
+    try {
+      const [result] = await connection.query(
+        'DELETE FROM games WHERE id = UUID_TO_BIN(?);',
+        [id]
+      )
+
+      if (result.affectedRows === 0) {
+        throw new Error('Game not found')
+      }
+
+      return { message: 'Game deleted successfully' }
+    } catch (e) {
+      throw new Error(e.message)
+    }
+  }
+
   static async create ({ input }) {
     console.log(input)
     const { title, description, category_id, liked, download, price, poster } =
@@ -67,26 +84,46 @@ export class GameModel {
     }
   }
 
-  static async delete ({ id }) {
+  static async update ({ id, input }) {
+    const { title, description, category_id, liked, download, price, poster } = input
+
     try {
       const [result] = await connection.query(
-        'DELETE FROM games WHERE id = UUID_TO_BIN(?);',
-        [id]
+        `UPDATE games SET 
+          title = ?,
+          description = ?,
+          category_id = ?,
+          liked = ?,
+          download = ?,
+          price = ?,
+          poster = ?
+        WHERE id = UUID_TO_BIN(?);`,
+        [title, description, category_id, liked, download, price, poster, id]
       )
 
       if (result.affectedRows === 0) {
-        throw new Error('Game not found')
+        throw new Error('Game not found or no changes made')
       }
 
-      return { message: 'Game deleted successfully' }
+      // Recuperar el juego actualizado para devolverlo
+      const [games] = await connection.query(
+        'SELECT BIN_TO_UUID(id) as id, title, description, liked, download, price, poster FROM games WHERE id = UUID_TO_BIN(?);',
+        [id]
+      )
+
+      if (games.length === 0) {
+        throw new Error('Error retrieving the updated game')
+      }
+
+      return games[0]
     } catch (e) {
-      throw new Error(e.message)
+      throw new Error('Error updating game')
+      // throw new Error(e.message)
     }
   }
 
-  static async update ({ id, input }) {
-    const { title, description, category_id, liked, download, price, poster } =
-      input
+  static async updateAll ({ id, input }) {
+    const { title, description, category_id, liked, download, price, poster } = input
 
     try {
       const [result] = await connection.query(

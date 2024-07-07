@@ -2,7 +2,10 @@
 GET http://localhost:1234/games
 
 ### RECUPERAR UN JUEGO POR ID
-GET http://localhost:1234/games/d5f6833b-3c08-11ef-9303-f02f7419c768
+GET http://localhost:1234/games/d7e8ab2e-3c8d-11ef-9303-f02f7419c768
+
+### BORRAR UN JUEGO POR ID
+DELETE http://localhost:1234/games/0a2d176d-3c8e-11ef-9303-f02f7419c768
 
 ### CREAR UN JUEGO CON POST
 POST http://localhost:1234/games
@@ -18,17 +21,27 @@ Content-Type: application/json
   "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg"
 }
 
-
-### BORRAR UN JUEGO POR ID
-DELETE http://localhost:1234/games/556b6807-3c89-11ef-9303-f02f7419c768
-
 ### ACTUALIZAR UN JUEVO -> (solo una parte de el)
-PATCH http://localhost:1234/games/5f1f5724-3c2e-11ef-9303-f02f7419c768
+PATCH http://localhost:1234/games/d7e8ab2e-3c8d-11ef-9303-f02f7419c768
 Content-Type: application/json
 
 {
   "title": "Mortal Kombat",
-  "description": "Lorem ipsum",
+  "description": "Lorem ipsum dolor",
   "category_id": 1,
   "price": 12.22
+}
+
+### ACTUALIZAR COMPLETAMENTE UN RECURSO
+PUT http://localhost:1234/games/d7e8ab2e-3c8d-11ef-9303-f02f7419c768
+Content-Type: application/json
+
+{
+  "title": "Updated Title",
+  "description": "Updated Description",
+  "category_id": 1,
+  "liked": 300,
+  "download": 200,
+  "price": 20.00,
+  "poster": "https://updatedimage.url"
 }

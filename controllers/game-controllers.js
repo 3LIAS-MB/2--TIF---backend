@@ -35,19 +35,32 @@ export class GamesController {
     const result = await this.gameModel.delete({ id })
 
     if (result === false) {
-      return res.status(404).json({ message: 'Movie not found' })
+      return res.status(404).json({ message: 'Game not found' })
     }
 
-    return res.json({ message: 'Movie deleted' })
+    return res.json({ message: 'Game deleted' })
   }
 
   update = async (req, res) => {
+    // validar cualquier parte (algunos no pueden ser null)
     const result = validatePartialGame(req.body)
     if (!result.success) {
       return res.status(400).json({ error: JSON.parse(result.error.message) })
     }
     const { id } = req.params
     const updatedGame = await this.gameModel.update({ id, input: result.data })
+
+    return res.json(updatedGame)
+  }
+
+  updateAll = async (req, res) => {
+    // validar todo obligatoriamente
+    const result = validateGame(req.body)
+    if (!result.success) {
+      return res.status(400).json({ error: JSON.parse(result.error.message) })
+    }
+    const { id } = req.params
+    const updatedGame = await this.gameModel.updateAll({ id, input: result.data })
 
     return res.json(updatedGame)
   }
