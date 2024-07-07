@@ -1,11 +1,12 @@
 import mysql from 'mysql2/promise'
+import { DB_HOST, DB_USER, DB_PORT, DB_PASSWORD, DB_DATABASE } from '../../config.js'
 
 const DEFAULT_CONFIG = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  port: process.env.DB_PORT || 3306,
-  password: process.env.DB_PASSWORD || 'S436339133xd',
-  database: process.env.DB_NAME || 'shopgames'
+  host: DB_HOST,
+  user: DB_USER,
+  port: DB_PORT,
+  password: DB_PASSWORD,
+  database: DB_DATABASE
 }
 
 const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG

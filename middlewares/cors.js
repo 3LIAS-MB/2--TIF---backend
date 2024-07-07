@@ -4,7 +4,8 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:8080',
   'http://localhost:1234',
   'http://localhost:1234/games',
-  'http://localhost:1234/games/:id'
+  'http://localhost:1234/games/:id',
+  'monorail.proxy.rlwy.net'
 ]
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({

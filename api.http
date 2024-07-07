@@ -5,7 +5,7 @@ GET http://localhost:1234/games
 GET http://localhost:1234/games/d7e8ab2e-3c8d-11ef-9303-f02f7419c768
 
 ### BORRAR UN JUEGO POR ID
-DELETE http://localhost:1234/games/0a2d176d-3c8e-11ef-9303-f02f7419c768
+DELETE http://localhost:1234/games/cb423e93-3ca4-11ef-9303-f02f7419c768
 
 ### CREAR UN JUEGO CON POST
 POST http://localhost:1234/games
@@ -22,18 +22,18 @@ Content-Type: application/json
 }
 
 ### ACTUALIZAR UN JUEVO -> (solo una parte de el)
-PATCH http://localhost:1234/games/d7e8ab2e-3c8d-11ef-9303-f02f7419c768
+PATCH http://localhost:1234/games/69fe6add-3cb2-11ef-9303-f02f7419c768
 Content-Type: application/json
 
 {
   "title": "Mortal Kombat",
-  "description": "Lorem ipsum dolor",
+  "description": "Lorem ipsum dolorr",
   "category_id": 1,
   "price": 12.22
 }
 
 ### ACTUALIZAR COMPLETAMENTE UN RECURSO
-PUT http://localhost:1234/games/d7e8ab2e-3c8d-11ef-9303-f02f7419c768
+PUT http://localhost:1234/games/69fe6add-3cb2-11ef-9303-f02f7419c768
 Content-Type: application/json
 
 {
