@@ -1,0 +1,34 @@
+### RECUPERAR TODAS LAS JUEGOS
+GET http://localhost:1234/games
+
+### RECUPERAR UN JUEGO POR ID
+GET http://localhost:1234/games/d5f6833b-3c08-11ef-9303-f02f7419c768
+
+### CREAR UN JUEGO CON POST
+POST http://localhost:1234/games
+Content-Type: application/json
+
+{
+  "title": "Lorem, ipsum dolor",
+  "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic delectus",
+  "category_id": 1,
+  "liked": 212,
+  "download": 166,
+  "price": 15.45,
+  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg"
+}
+
+
+### BORRAR UN JUEGO POR ID
+DELETE http://localhost:1234/games/837bcc40-3c23-11ef-9303-f02f7419c768
+
+### ACTUALIZAR UN JUEVO -> (solo una parte de el)
+PATCH http://localhost:1234/games/5f1f5724-3c2e-11ef-9303-f02f7419c768
+Content-Type: application/json
+
+{
+  "title": "Mortal Kombat",
+  "description": "Lorem ipsum",
+  "category_id": 1,
+  "price": 12.22
+}
