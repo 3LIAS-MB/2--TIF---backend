@@ -20,7 +20,7 @@ Content-Type: application/json
 
 
 ### BORRAR UN JUEGO POR ID
-DELETE http://localhost:1234/games/837bcc40-3c23-11ef-9303-f02f7419c768
+DELETE http://localhost:1234/games/556b6807-3c89-11ef-9303-f02f7419c768
 
 ### ACTUALIZAR UN JUEVO -> (solo una parte de el)
 PATCH http://localhost:1234/games/5f1f5724-3c2e-11ef-9303-f02f7419c768

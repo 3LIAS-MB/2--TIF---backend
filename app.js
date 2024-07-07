@@ -1,6 +1,7 @@
 import express, { json } from 'express'
 import { createGameRouter } from './routes/games-routes.js'
 import { corsMiddleware } from './middlewares/cors.js'
+import 'dotenv/config'
 
 export const createApp = ({ gameModel }) => {
   const app = express()
