@@ -124,7 +124,7 @@ export class GameModel {
 
   static async updateAll ({ id, input }) {
     const { title, description, category_id, liked, download, price, poster } = input
-
+    console.log(id)
     try {
       const [result] = await connection.query(
         `UPDATE games SET 

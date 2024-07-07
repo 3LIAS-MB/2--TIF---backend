@@ -38,7 +38,7 @@ Content-Type: application/json
 
 {
   "title": "Updated Title",
-  "description": "Updated Description",
+  "description": "Updated Description xdxd",
   "category_id": 1,
   "liked": 300,
   "download": 200,

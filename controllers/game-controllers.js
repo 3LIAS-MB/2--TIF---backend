@@ -56,6 +56,7 @@ export class GamesController {
   updateAll = async (req, res) => {
     // validar todo obligatoriamente
     const result = validateGame(req.body)
+    console.log(result)
     if (!result.success) {
       return res.status(400).json({ error: JSON.parse(result.error.message) })
     }
